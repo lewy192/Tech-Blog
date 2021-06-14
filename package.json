@@ -1,30 +1,31 @@
 {
-  "name": "Tech-Blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lewy192/Tech-Blog.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lewy192/Tech-Blog/issues"
-  },
-  "homepage": "https://github.com/lewy192/Tech-Blog#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-sessions": "^1.0.6",
-    "handlebars": "^4.7.7",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
-    "nodemon": "^2.0.7",
-    "sequelize": "^6.6.2"
-  }
+    "name": "Tech-Blog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "devStart": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lewy192/Tech-Blog.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lewy192/Tech-Blog/issues"
+    },
+    "homepage": "https://github.com/lewy192/Tech-Blog#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-sessions": "^1.0.6",
+        "handlebars": "^4.7.7",
+        "express-handlebars": "^5.2.0",
+        "mysql2": "^2.2.5",
+        "nodemon": "^2.0.7",
+        "sequelize": "^6.6.2"
+    }
 }
