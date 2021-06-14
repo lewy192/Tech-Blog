@@ -23,6 +23,7 @@ app.set("view engine", "handlebars");
 app.use(session({ cookieName: "session", secret: process.env.COOKIE_SECRET }));
 app.use(express.json);
 app.use(express.urlencoded({ extneded: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
 
