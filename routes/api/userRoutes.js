@@ -6,14 +6,13 @@ const { log } = require("handlebars/runtime");
 require("dotenv").config();
 
 router.post("/login", async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password: passwordToCheck } = req.body;
     try {
         const userLogin = await User.findOne({
             where: { usernamme: username },
         });
-        const { password: userPassword } = userLogin;
-        if (!userLogin.checkPassword(userPassword)) {
-            correctDetails = false;
+        if (!userLogin.checkPassword(passwordToCheck)) {
+            incorrectDetails = true;
             res.render("login", { correctDetails });
         }
         req.session.save(() => {
