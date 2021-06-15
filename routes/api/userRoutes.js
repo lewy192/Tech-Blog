@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const errLoggger = require("../utils/errlog");
+const errLoggger = require("../../utils/errlog");
 const User = require("../../models/User");
 const { log } = require("handlebars/runtime");
 require("dotenv").config();
@@ -56,3 +56,5 @@ router.post("signup", async (req, res) => {
         res.status(500);
     }
 });
+
+module.exports = router;
