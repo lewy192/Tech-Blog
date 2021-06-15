@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Ready</title>
+    <title>The Tech Blog</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,12 +14,14 @@
             </a>
         </div>
         <nav>
-            {{#if logged_in}}
-                <a class="nav-link" href="/profile">Profile</a>
+            {{#if loggedIn}}
+                <a href="/" class="nav-link home-link">Home</a>
                 <a class="nav-link" href="/logout" id="logout">Logout</a>
+                <a class="nav-link" href="/logout" id="dashboard">Dashboard</a>
             {{else}}
-                <a class="nav-link" href="/signup">Sign Up</a>
-                <a class="nav-link" href="/login">Login</a>
+                <a href="/" class="nav-link home-link">Home</a>
+                <a class="nav-link signup-link" href="/signup">Sign Up</a>
+                <a class="nav-link login-link" href="/login">Login</a>
             {{/if}}
         </nav>
 
@@ -27,15 +29,5 @@
     <main>
         {{{ body }}}
     </main>
-    <footer>
-        <div class="logo">
-            <h2>Created</h2>
-            <h2 class="logo-orange pl">by</h2>
-        </div>
-
-        <a href="https://github.com/lewy192" target="_blank" class="creator-name">Lewis</a>
-
-
-    </footer>
 </div>
 </body>

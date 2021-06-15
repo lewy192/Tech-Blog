@@ -42,3 +42,5 @@ router.get("/signup", (req, res) => {
         res.status(500).send("whoops");
     }
 });
+
+module.exports = router;

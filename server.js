@@ -4,6 +4,7 @@ const session = require("express-sessions");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 const path = require("path");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 require("dotenv").config();
 
@@ -20,7 +21,22 @@ app.set("view engine", "handlebars");
 
 // establishing middlewear
 
-app.use(session({ cookieName: "session", secret: process.env.COOKIE_SECRET }));
+app.use(
+    session({
+        cookieName: "session",
+        secret: process.env.COOKIE_SECRET,
+        resave: false,
+        saveUninitialize: true,
+        store: new SequelizeStore({
+            db: sequelize,
+        }),
+        cookie: {
+            httpOnly: true,
+            secure: true,
+            maxAge: 24 * 60 * 60 * 1000,
+        },
+    })
+);
 app.use(express.json);
 app.use(express.urlencoded({ extneded: true }));
 app.use(express.static(path.join(__dirname, "public")));
