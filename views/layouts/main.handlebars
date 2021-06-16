@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Tech Blog</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class = "header">
-            <a  class="logo" href="/">
-                Tech Blog
-            </a>
-        <nav>
+    <header class = "header">  
+        <nav class = "nav-bar">
             {{#if loggedIn}}
                 <a href="/" class="nav-link home-link">Home</a>
                 <a class="nav-link" href="/logout" id="logout">Logout</a>
@@ -22,7 +20,7 @@
                 <a class="nav-link login-link" href="/login">Login</a>
             {{/if}}
         </nav>
-
+        <h1 class="logo">The Tech Blog</h1>
     </header>
     <main>
         {{{ body }}}
