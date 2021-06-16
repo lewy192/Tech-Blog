@@ -1,0 +1,151 @@
+:root {
+    --brandColor: rgb(26, 3, 3);
+    --headerMaron: rgb(40, 5, 5);
+    --eggShellWhite: bisque;
+}
+
+*,
+*::after,
+*::before {
+    font-family: "Lato", sans-serif;
+}
+
+.header {
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    background-color: var(--headerMaron);
+}
+.logo {
+    background-color: var(--eggShellWhite);
+    color: var(--headerMaron);
+    font-size: 40px;
+    font-weight: 900;
+    padding: 0.4rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 7px 7px grey;
+    text-decoration: none;
+    margin-left: 40px;
+    width: max-content;
+}
+
+.nav-bar {
+}
+:root {
+    --brandColor: rgb(26, 3, 3);
+    --headerMaron: rgb(40, 5, 5);
+    --eggShellWhite: bisque;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--eggShellWhite);
+}
+*,
+*::after,
+*::before {
+    font-family: "Lato", sans-serif;
+}
+main {
+    margin: 1rem 2rem;
+}
+
+.header {
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    background-color: var(--headerMaron);
+}
+.logo {
+    background-color: var(--eggShellWhite);
+    color: var(--headerMaron);
+    font-size: 40px;
+    font-weight: 900;
+    padding: 0.4rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 7px 7px grey;
+    text-decoration: none;
+    margin-left: 40px;
+    width: max-content;
+}
+
+.nav-bar {
+    margin-left: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--eggShellWhite);
+    font-size: 25px;
+    margin: 30px;
+}
+
+.question-card {
+    border: 3px solid var(--headerMaron);
+    background-color: var(--eggShellWhite);
+    margin-top: 2rem;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0.6rem 0.5rem;
+    color: rgb(148, 148, 148);
+    background-color: var(--headerMaron);
+}
+.question-header {
+    margin: 0;
+}
+
+.question-details {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.error {
+    color: red;
+}
+h3 {
+    margin: 0;
+}
+
+.credentials-container {
+    margin-top: 2rem;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--headerMaron);
+    background-color: var(--eggShellWhite);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem 0.5rem;
+}
+.login-form > * {
+    margin: 0.2rem;
+    height: 35px;
+}
+
+.label {
+    color: var(--headerMaron);
+    height: fit-content;
+}
+
+.submit {
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    height: 35px;
+    border: none;
+    font-size: 20px;
+}
+
+.color-container {
+    margin-top: 2rem;
+    background-color: var(--eggShellWhite);
+    padding: 0.75rem 1rem;
+}
