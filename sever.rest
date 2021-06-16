@@ -1,0 +1,19 @@
+GET http://localhost:3001/login
+
+###
+
+GET http://localhost:3001
+
+### 
+# create user
+POST http://localhost:3001/api/signup
+Content-Type: application/json
+
+{
+    "username":"lewy192",
+    "enteredPassword":"test",
+    "firstName":"lewis",
+    "lastName":"hill",
+    "email":"lewis.test@email.com"
+
+}

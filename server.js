@@ -24,28 +24,24 @@ app.set("view engine", "handlebars");
 
 app.use(
     session({
-        cookieName: "session",
         secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialize: true,
         store: new SequelizeStore({
             db: sequelize,
         }),
-        cookie: {
-            httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-        },
+        cookie: {},
     })
 );
-app.use(express.json);
-app.use(express.urlencoded({ extneded: true }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
 
 sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => {
-        console.log("App Successful");
+        console.log("App Successful, on port:" + PORT);
     });
 });

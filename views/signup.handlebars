@@ -1,5 +1,5 @@
 <div class="signup-container">
-        <form class="submit-form">
+        <form class="submit-form" action = "api/signup" method="POST">
             <h2 class="sign-up-header">Sign Up:</h2>
             <label for="username-signup">Username:</label>
             <input type="text" id="username-signup" name="username" />
@@ -10,7 +10,7 @@
             <label for="email-signup">Email:</label>
             <input type="text" id="email-signup" name="email" />
             <label for="password-signup">Password:</label>
-            <input type="password" id="password-signup" name="password" />
+            <input type="password" id="password-signup" name="enteredPassword" />
             </div>
             <input type="submit" value="Sign Up">
         </form>

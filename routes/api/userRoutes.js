@@ -1,15 +1,14 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const errLoggger = require("../../utils/errlog");
 const User = require("../../models/User");
-const { log } = require("handlebars/runtime");
 require("dotenv").config();
 
 router.post("/login", async (req, res) => {
     const { username, password: passwordToCheck } = req.body;
     try {
         const userLogin = await User.findOne({
-            where: { usernamme: username },
+            where: { username: username },
         });
         if (!userLogin.checkPassword(passwordToCheck)) {
             incorrectDetails = true;
@@ -21,13 +20,15 @@ router.post("/login", async (req, res) => {
             res.render("homepage", { loggedIn });
         });
     } catch (err) {
-        errLoggger.errorLogging(err);
+        // errLoggger.errorLogging(err);
+        console.log(err);
         res.status(500);
     }
 });
 
-router.post("signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
     try {
+        console.log(req.body);
         const {
             firstName,
             lastName,
@@ -36,23 +37,26 @@ router.post("signup", async (req, res) => {
             enteredPassword,
             confirmPassword,
         } = req.body;
+        console.log([firstName, lastName, enteredPassword, email, username]);
+        const salt = await bcrypt.genSalt(10);
+        const password = await bcrypt.hash(enteredPassword, salt);
 
-        const password = bcrypt.hashSync(enteredPassword, 10);
-
-        const newUser = await User.create(
+        const newUser = await User.create({
             username,
             email,
             firstName,
             lastName,
-            password
-        );
+            password,
+        });
+
         req.session.save(() => {
             req.session.loggedIn = true;
             loggedIn = true;
             res.status(200).render("homepage", { loggedIn });
         });
     } catch (err) {
-        errLoggger.errorLogging(err);
+        console.log(err);
+        // errLoggger.errorLogging(err);
         res.status(500);
     }
 });
