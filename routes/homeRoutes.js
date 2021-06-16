@@ -2,49 +2,44 @@ const router = require("express").Router();
 
 const errLoggger = require("../utils/errlog");
 
+const errorMessage500 = "Whoops status 500. Try again soon";
 router.get("/", (req, res) => {
     try {
-        if (req.session.loggedIn) {
-            console.log("here");
-            res.status(200);
-            res.render("homepage", { logged_in: true });
-        }
-        console.log("here 2");
+        const { loggedIn } = req.session;
         res.status(200);
-        res.render("homepage");
-        res.end();
+        res.render("homepage", { loggedIn });
     } catch (err) {
-        // errLoggger.errorLogging(err);
-        console.log("here set head");
-        res.status(500).send("whoops");
+        // errLoggger.errorLogging(err);.
+
+        res.status(500).send(errorMessage500);
     }
 });
 
 router.get("/login", (req, res) => {
     try {
-        if (req.session.loggedIn) {
-            res.status(200);
-            res.render("homepage", { logged_in: loggedIn });
+        const { loggedIn } = req.session;
+        if (loggedIn) {
+            res.status(200).render("homepage", { loggenIn });
         }
         res.status(200);
-        res.render("login", { logged_in: true });
+        res.render("login", { loggedIn });
     } catch (err) {
         // errLoggger.errorLogging(err);
-        res.status(500).send("whoops");
+        res.status(500).send(errorMessage500);
     }
 });
 
 router.get("/signup", (req, res) => {
     try {
-        if (req.session.loggedIn) {
-            res.status(200);
-            res.render("homepage", { logged_in: loggedIn });
+        const { loggedIn } = req.session;
+        if (loggedIn) {
+            res.status(200).render("homepage", { loggenIn });
         }
         res.status(200);
         res.render("signup");
     } catch (err) {
         // errLoggger.errorLogging(err);
-        res.status(500).send("whoops");
+        res.status(500).send(errorMessage500);
     }
 });
 
