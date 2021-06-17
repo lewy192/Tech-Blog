@@ -25,12 +25,13 @@ router.get("/login", (req, res) => {
     try {
         const { loggedIn } = req.session;
         if (loggedIn) {
-            res.status(200).render("homepage", { loggenIn });
+            res.status(200).redirect("/");
         }
         res.status(200);
         res.render("credentials", { login });
     } catch (err) {
         // errLoggger.errorLogging(err);
+        console.log(err);
         res.status(500).send(errorMessage500);
     }
 });
@@ -40,12 +41,14 @@ router.get("/signup", (req, res) => {
     try {
         const { loggedIn } = req.session;
         if (loggedIn) {
-            res.status(200).render("homepage", { loggenIn });
+            res.status(200).redirect("/");
         }
         res.status(200);
         res.render("credentials", { login });
     } catch (err) {
         // errLoggger.errorLogging(err);
+        console.log(err);
+
         res.status(500).send(errorMessage500);
     }
 });
