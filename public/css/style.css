@@ -85,6 +85,13 @@ main {
     background-color: var(--eggShellWhite);
     margin-top: 2rem;
 }
+.question-title {
+    text-decoration: none;
+    color: var(--eggShellWhite);
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -95,6 +102,12 @@ main {
 }
 .question-header {
     margin: 0;
+}
+.question-content {
+    margin-left: 0.8rem;
+}
+.question-content::first-letter {
+    text-transform: capitalize;
 }
 
 .question-details {
