@@ -39,6 +39,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: var(--eggShellWhite);
+    height: 100vh;
 }
 *,
 *::after,
@@ -131,12 +132,14 @@ h3 {
     background-color: var(--eggShellWhite);
 }
 
-.login-form {
+.login-form,
+.form {
     display: flex;
     flex-direction: column;
     padding: 0.4rem 0.5rem;
 }
-.login-form > * {
+.login-form > *,
+.form > * {
     margin: 0.2rem;
     height: 35px;
 }
@@ -159,4 +162,10 @@ h3 {
     margin-top: 2rem;
     background-color: var(--eggShellWhite);
     padding: 0.75rem 1rem;
+}
+
+.comment-card {
+    border: 3px solid var(--headerMaron);
+    background-color: var(--eggShellWhite);
+    margin-top: 2rem;
 }
