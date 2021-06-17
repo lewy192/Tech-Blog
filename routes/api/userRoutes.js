@@ -29,23 +29,13 @@ router.post("/login", async (req, res) => {
 router.post("/signup", async (req, res) => {
     try {
         console.log(req.body);
-        const {
-            firstName,
-            lastName,
-            email,
-            username,
-            enteredPassword,
-            confirmPassword,
-        } = req.body;
-        console.log([firstName, lastName, enteredPassword, email, username]);
+        const { username, password: enteredPassword } = req.body;
+
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(enteredPassword, salt);
 
         const newUser = await User.create({
             username,
-            email,
-            firstName,
-            lastName,
             password,
         });
 
