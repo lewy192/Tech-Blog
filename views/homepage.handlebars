@@ -1,9 +1,20 @@
 <div class="main-content">
     <div class="question-container">
-        <div class="question">
-            <h2 class="question-header">How does the stack work?</h2>
-            <p class="question-body">So I've been wondering how the stack works
-                can anyone help me?</p>
-        </div>
+        {{#each posts as |post|}}
+            <div class="question-card">
+                <div class="header-container">
+                    <h3 class="question-header"><a
+                            href="/posts/{{post.id}}"
+                            class="question-title"
+                        >{{post.postTitle}}</a></h3>
+                    <span class="question-owner question-details">Posted By
+                        Lewis on 03/05/1999
+                    </span>
+                </div>
+                <p class="question-content">
+                    {{post.postContent}}
+                </p>
+            </div>
+        {{/each}}
     </div>
 </div>
