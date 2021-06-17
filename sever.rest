@@ -17,3 +17,7 @@ Content-Type: application/json
     "email":"lewis.test@email.com"
 
 }
+
+
+###
+GET http://localhost:3001/api/post/1
