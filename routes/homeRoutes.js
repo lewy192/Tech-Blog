@@ -1,28 +1,34 @@
 const router = require("express").Router();
-
+const { Post, User } = require("../models");
 const errLoggger = require("../utils/errlog");
 
 const errorMessage500 = "Whoops status 500. Try again soon";
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     try {
+        const postData = await Post.findAll({
+            include: [{ model: User, attributes: ["username"] }],
+        });
         const { loggedIn } = req.session;
+        let posts = postData.map((post) => post.get({ plain: true }));
+        console.log(posts);
         res.status(200);
-        res.render("homepage", { loggedIn });
+        res.render("homepage", { loggedIn, posts });
     } catch (err) {
         // errLoggger.errorLogging(err);.
-
+        console.log(err);
         res.status(500).send(errorMessage500);
     }
 });
 
 router.get("/login", (req, res) => {
+    const login = true;
     try {
         const { loggedIn } = req.session;
         if (loggedIn) {
             res.status(200).render("homepage", { loggenIn });
         }
         res.status(200);
-        res.render("login", { loggedIn });
+        res.render("credentials", { login });
     } catch (err) {
         // errLoggger.errorLogging(err);
         res.status(500).send(errorMessage500);
@@ -30,13 +36,14 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
+    const login = false;
     try {
         const { loggedIn } = req.session;
         if (loggedIn) {
             res.status(200).render("homepage", { loggenIn });
         }
         res.status(200);
-        res.render("signup");
+        res.render("credentials", { login });
     } catch (err) {
         // errLoggger.errorLogging(err);
         res.status(500).send(errorMessage500);
