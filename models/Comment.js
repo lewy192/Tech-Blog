@@ -15,6 +15,7 @@ Comment.init(
             allowNull: false,
             autoIncrement: true,
         },
+        commentContent: { type: DataTypes.TEXT, allowNull: false },
         date: {
             type: DataTypes.DATE,
             allowNull: false,
