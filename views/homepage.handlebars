@@ -8,7 +8,9 @@
                             class="question-title"
                         >{{post.postTitle}}</a></h3>
                     <span class="question-owner question-details">Posted By
-                        Lewis on 03/05/1999
+                        {{post.User.username}}
+                        on
+                        {{format_date post.date}}
                     </span>
                 </div>
                 <p class="question-content">
