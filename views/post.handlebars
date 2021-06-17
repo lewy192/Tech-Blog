@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="question-container">
+        <div class="question-card">
+            <div class="header-container">
+                <h3 class="question-header"><a
+                        href="api/post/{{post.id}}"
+                        class="question-title"
+                    >{{post.postTitle}}</a></h3>
+                <span class="question-owner question-details">Posted By
+                    {{post.User.username}}
+                    on
+                    {{format_date post.date}}
+                </span>
+            </div>
+            <p class="question-content">
+                {{post.postContent}}
+            </p>
+        </div>
+    </div>
+    <div class="new-comment">
+        <div class="header-container"></div>
+        <form action="/api/comment" class="new-comment form" method="POST">
+            <label
+                for="comment-content"
+                class="comment-label label"
+            >Comment:</label>
+            <input type="text" class="comment-content" />
+            <input type="submit" class="submit" />
+        </form>
+
+    </div>
+    <div class="comment-container">
+        {{#each comments as |comment|}}
+            <div class="comment-card">
+                <div class="header-container"></div>
+                <p class="comment-content">{{comment.commentContent}}</p>
+                <h3
+                    class="comment-detials"
+                >{{comment.User.username}}{{format_date comment.date}}</h3>
+            </div>
+        {{/each}}
+    </div>
+</div>
