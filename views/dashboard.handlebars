@@ -1,0 +1,19 @@
+<div class="question-container">
+    {{#each posts as |post|}}
+        <div class="question-card">
+            <div class="header-container">
+                <h3 class="question-header"><a
+                        href="/posts/{{post.id}}"
+                        class="question-title"
+                    >{{post.postTitle}}</a></h3>
+                <span class="question-owner question-details">Posted By Lewis on
+                    03/05/1999
+                </span>
+            </div>
+            <p class="question-content">
+                {{post.postContent}}
+            </p>
+        </div>
+    {{/each}}
+</div>
+<a href="/new-post" class="new-post"><button class="new-post">+ New Post</button></a>
