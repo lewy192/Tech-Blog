@@ -11,8 +11,8 @@ router.post("/login", async (req, res) => {
             where: { username: username },
         });
         if (!userLogin.checkPassword(passwordToCheck)) {
-            incorrectDetails = true;
-            res.render("login", { correctDetails });
+            detailsIncorrect = true;
+            res.render("login", { detailsIncorrect });
         }
         req.session.save(() => {
             req.session.loggedIn = true;
