@@ -26,12 +26,6 @@ User.init(
             type: DataTypes.STRING(66),
             allowNull: false,
         },
-        email: {
-            type: DataTypes.STRING(320),
-            allowNull: false,
-        },
-        firstName: { type: DataTypes.STRING(56), allowNull: false },
-        lastName: { type: DataTypes.STRING(56), allowNull: false },
     },
     {
         sequelize,
