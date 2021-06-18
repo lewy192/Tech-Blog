@@ -6,8 +6,10 @@
                         href="api/post/{{post.id}}"
                         class="question-title"
                     >{{post.postTitle}}</a></h3>
-                <span class="question-owner question-details">Posted By Lewis on
-                    03/05/1999
+                <span class="question-owner question-details">Posted By
+                    {{post.User.username}}
+                    on
+                    {{format_date post.date}}
                 </span>
             </div>
             <p class="question-content">
@@ -15,5 +17,10 @@
             </p>
         </div>
     {{/each}}
+
 </div>
-<a href="/new-post" class="new-post"><button class="new-post">+ New Post</button></a>
+
+<div class="new-post-container">
+    <a href="/post/create" class="new-post"><button class="new-post-button">+
+            New Post</button></a>
+</div>

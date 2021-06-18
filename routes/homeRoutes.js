@@ -70,4 +70,19 @@ router.get("/dashboard", async (req, res) => {
         res.status(500).send(errorMessage500);
     }
 });
+
+router.get("/logout", async (req, res) => {
+    try {
+        const { loggedIn } = req.session;
+        if (loggedIn) {
+            req.session.destroy();
+            res.status(200);
+            res.render("homepage", { loggedIn });
+        }
+        res.status(404);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(errorMessage500);
+    }
+});
 module.exports = router;
