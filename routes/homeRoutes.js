@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 const errLoggger = require("../utils/errlog");
 
 const errorMessage500 = "Whoops status 500. Try again soon";
@@ -53,4 +53,21 @@ router.get("/signup", (req, res) => {
     }
 });
 
+router.get("/dashboard", async (req, res) => {
+    try {
+        const { loggedIn } = req.session;
+        const { userId: currentUserId } = req.session;
+        const usersPosts = await Post.findAll({
+            where: { userId: currentUserId },
+            include: [{ model: Comment }, { model: User }],
+            // attributes: { exclude: ["password"] },
+        });
+        const posts = usersPosts.map((post) => post.get({ plain: true }));
+        res.status(200);
+        res.render("dashboard", { posts, loggedIn });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(errorMessage500);
+    }
+});
 module.exports = router;
