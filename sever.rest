@@ -21,3 +21,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/api/post/7
+
+
+### 
+POST http://localhost:3001/api/post/create
+Content-Type: application/json
+
+{
+    "postTitle":"this is a testasdf3",
+    "postContent": "testing nbumer 3"
+}

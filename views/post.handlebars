@@ -1,43 +1,84 @@
-<div class="main-content">
-    <div class="question-container">
-        <div class="question-card">
-            <div class="header-container">
-                <h3 class="question-header"><a
-                        href="api/post/{{post.id}}"
-                        class="question-title"
-                    >{{post.postTitle}}</a></h3>
-                <span class="question-owner question-details">Posted By
-                    {{post.User.username}}
-                    on
-                    {{format_date post.date}}
-                </span>
+{{#if isPostOwner}}
+    {{! add partial here when working }}
+    <div class="new-post-form-container container">
+        <div class="header-container"></div>
+        <form class="update-post-form form" id="new-post-form">
+            <label for="new-post-title" class="new-post-title">Post Title:</label>
+            <input
+                type="text"
+                class="new-post-title"
+                name="postTitle"
+                required
+            />
+            <label for="new-post-content" class="new-post-label">Post Content</label>
+            <textarea
+                form="new-post-form"
+                class="new-post-content"
+                name="postContent"
+                required
+            ></textarea>
+            <input
+                type="submit"
+                value="Create Post"
+                class="submit update-post"
+            />
+        </form>
+    </div>
+    {{!-- {{>add-comment}} --}}
+{{else}}
+    <div class="main-content">
+        <div class="question-container">
+            <div class="question-card">
+                <div class="header-container">
+                    <h3 class="question-header"><a
+                            href="/post/{{post.id}}"
+                            class="question-title"
+                        >{{post.postTitle}}</a></h3>
+                    <span class="question-owner question-details">Posted By
+                        {{post.User.username}}
+                        on
+                        {{format_date post.date}}
+                    </span>
+                </div>
+                <p class="question-content">
+                    {{post.postContent}}
+                </p>
             </div>
-            <p class="question-content">
-                {{post.postContent}}
-            </p>
+        </div>
+        {{#if loggedIn}}
+            <div class="new-comment container">
+                <div class="header-container"></div>
+                <form
+                    action="/api/comment/create/{{post.id}}"
+                    class="new-comment form"
+                    method="POST"
+                >
+                    <label
+                        for="comment-content"
+                        class="comment-label label"
+                    >Comment:</label>
+                    <textarea
+                        class="comment-content"
+                        required
+                        name="commentContent"
+                    >
+                    </textarea>
+                    <input type="submit" class="submit" />
+                </form>
+            </div>
+        {{/if}}
+        <div class="comment-container">
+            {{#each comments as |comment|}}
+                <div class="comment-card">
+                    <div class="header-container"></div>
+                    <p class="comment-content">{{comment.commentContent}}</p>
+                    <h5 class="comment-detials">-{{comment.User.username}}
+                        {{format_date comment.date}}</h5>
+                </div>
+            {{/each}}
         </div>
     </div>
-    <div class="new-comment">
-        <div class="header-container"></div>
-        <form action="/api/comment" class="new-comment form" method="POST">
-            <label
-                for="comment-content"
-                class="comment-label label"
-            >Comment:</label>
-            <input type="text" class="comment-content" />
-            <input type="submit" class="submit" />
-        </form>
 
-    </div>
-    <div class="comment-container">
-        {{#each comments as |comment|}}
-            <div class="comment-card">
-                <div class="header-container"></div>
-                <p class="comment-content">{{comment.commentContent}}</p>
-                <h3
-                    class="comment-detials"
-                >{{comment.User.username}}{{format_date comment.date}}</h3>
-            </div>
-        {{/each}}
-    </div>
-</div>
+{{/if}}
+
+<script src="js/post.js"></script>

@@ -11,7 +11,9 @@ require("dotenv").config();
 
 const sequelize = require("./config/connection");
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+    helpers,
+});
 
 const app = express();
 

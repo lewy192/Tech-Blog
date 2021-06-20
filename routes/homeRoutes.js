@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 const errLoggger = require("../utils/errlog");
+const withAuth = require("../utils/auth");
 
 const errorMessage500 = "Whoops status 500. Try again soon";
 router.get("/", async (req, res) => {
@@ -53,7 +54,7 @@ router.get("/signup", (req, res) => {
     }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
     try {
         const { loggedIn } = req.session;
         const { userId: currentUserId } = req.session;
@@ -71,13 +72,24 @@ router.get("/dashboard", async (req, res) => {
     }
 });
 
-router.get("/logout", async (req, res) => {
+router.get("/createpost", withAuth, async (req, res) => {
+    try {
+        const { loggedIn } = req.session;
+        if (!loggedIn) {
+            res.redirect("/login");
+        }
+        res.render("newpost", { loggedIn });
+    } catch (err) {}
+});
+
+router.get("/logout", withAuth, async (req, res) => {
     try {
         const { loggedIn } = req.session;
         if (loggedIn) {
             req.session.destroy();
             res.status(200);
-            res.render("homepage", { loggedIn });
+            // loggedIn
+            res.redirect("/");
         }
         res.status(404);
     } catch (err) {

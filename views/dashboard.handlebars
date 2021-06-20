@@ -3,7 +3,7 @@
         <div class="question-card">
             <div class="header-container">
                 <h3 class="question-header"><a
-                        href="api/post/{{post.id}}"
+                        href="post/{{post.id}}"
                         class="question-title"
                     >{{post.postTitle}}</a></h3>
                 <span class="question-owner question-details">Posted By
@@ -12,15 +12,12 @@
                     {{format_date post.date}}
                 </span>
             </div>
-            <p class="question-content">
-                {{post.postContent}}
-            </p>
         </div>
     {{/each}}
 
 </div>
 
 <div class="new-post-container">
-    <a href="/post/create" class="new-post"><button class="new-post-button">+
-            New Post</button></a>
+    <a href="/createpost" class="new-post"><button class="new-post-button">+ New
+            Post</button></a>
 </div>
