@@ -157,6 +157,11 @@ h3 {
     height: 35px;
     border: none;
     font-size: 20px;
+    transition: 0.4s;
+}
+.submit:hover {
+    cursor: pointer;
+    transform: scale(1.01);
 }
 
 .color-container {
@@ -179,8 +184,19 @@ h3 {
     font-size: 20px;
     margin-top: 1rem;
 }
-.new-post-container {
+/* .new-post-container {
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.new-post-content {
+    height: 150px;
+    font-size: 16px;
 }
