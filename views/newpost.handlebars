@@ -1,10 +1,20 @@
 <div class="new-post-container container">
     <div class="header-container"></div>
-    <form action="/api/post/create" class="new-post-form" method="POST">
+    <form
+        action="/api/post/create"
+        class="new-post-form form"
+        method="POST"
+        id="new-post-form"
+    >
         <label for="new-post-title" class="new-post-title">Post Title:</label>
-        <input type="text" class="new-post-title" />
-        <label for="new-post-content" class="new-post-content">Post Content</label>
-        <input type="text" class="new-post-content" />
-        <input type="submit" value="New Post" class="submit" />
+        <input type="text" class="new-post-title" name="postTitle" required />
+        <label for="new-post-content" class="new-post-label">Post Content</label>
+        <textarea
+            form="new-post-form"
+            class="new-post-content"
+            name="postContent"
+            required
+        ></textarea>
+        <input type="submit" value="Create Post" class="submit" />
     </form>
 </div>
