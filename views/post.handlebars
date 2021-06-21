@@ -8,21 +8,23 @@
                 type="text"
                 class="new-post-title"
                 name="postTitle"
+                value="{{post.postTitle}}"
                 required
             />
-            <label for="new-post-content" class="new-post-label">Post Content</label>
+            <label for="new-post-content" class="new-post-label">Post Content:</label>
             <textarea
                 form="new-post-form"
                 class="new-post-content"
                 name="postContent"
-                required
-            ></textarea>
+                value="required"
+            >{{post.postContent}}</textarea>
             <input
                 type="submit"
-                value="Create Post"
+                value="Update Post"
                 class="submit update-post"
             />
         </form>
+        <button class="delete-post-button submit">Delete</button>
     </div>
     {{!-- {{>add-comment}} --}}
 {{else}}
@@ -81,4 +83,4 @@
 
 {{/if}}
 
-<script src="js/post.js"></script>
+<script src="/js/post.js"></script>

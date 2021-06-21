@@ -24,7 +24,7 @@ updatePost = async (e) => {
 
 deletePost = async (event) => {
     const postId = window.location.pathname.split("/").pop();
-    const response = await fetch(`api/post/${postIdx}`, { method: "DELETE" });
+    const response = await fetch(`/api/post/${postId}`, { method: "DELETE" });
 };
 
 const deleteButton = document.querySelector(".delete-post-button");

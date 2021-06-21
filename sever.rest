@@ -29,5 +29,6 @@ Content-Type: application/json
 
 {
     "postTitle":"this is a testasdf3",
-    "postContent": "testing nbumer 3"
+    "postContent": "testing nbumer 3",
+    "userId":1
 }

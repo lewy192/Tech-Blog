@@ -97,4 +97,39 @@ router.get("/logout", withAuth, async (req, res) => {
         res.status(500).send(errorMessage500);
     }
 });
+
+router.get("/post/:id", async (req, res) => {
+    try {
+        console.log(req.session);
+        const { loggedIn, userId: sessiondUserId } = req.session;
+        const { id: postId } = req.params;
+        const requestedPost = await Post.findOne({
+            where: { id: postId },
+            include: [
+                { model: User, attributes: ["username"] },
+                {
+                    model: Comment,
+                    include: [{ model: User, attributes: ["username"] }],
+                },
+            ],
+        });
+        if (!requestedPost) {
+            res.status(404).send(
+                "You have tried to update a post that doesnt exist, please try anohter id."
+            );
+        }
+        const post = requestedPost.get({ plain: true });
+
+        const { Comments: comments } = post;
+        // console.log(post);
+        const { userId } = requestedPost;
+
+        const isPostOwner = sessiondUserId === userId;
+        res.status(200);
+        res.render("post", { post, comments, isPostOwner, loggedIn });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(errorMessage500);
+    }
+});
 module.exports = router;
