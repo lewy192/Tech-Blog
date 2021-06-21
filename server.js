@@ -1,5 +1,5 @@
 const express = require("express");
-const routes = require("./routes");
+const routes = require("./controllers");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
@@ -30,10 +30,11 @@ app.use(
         secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialize: true,
+        rolling: true,
         store: new SequelizeStore({
             db: sequelize,
         }),
-        cookie: {},
+        cookie: { httpOnly: true, maxAge: 60 * 60 * 1000 },
     })
 );
 
