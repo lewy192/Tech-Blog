@@ -11,6 +11,8 @@ if (process.env.DATABASE_URL) {
                 rejectUnauthorized: false,
             },
         },
+        dialect: "postgres",
+        protocol: "postgres",
     };
     sequelize = new Sequelize(process.env.DATABASE_URL, config);
 } else {
