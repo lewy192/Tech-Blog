@@ -107,3 +107,6 @@ dist
 node_modules
 
 instructions
+
+.DS_Store
+/*.env
