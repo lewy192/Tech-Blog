@@ -30,12 +30,13 @@ router.put("/:id", withAuth, async (req, res) => {
             { postTitle, postContent },
             { where: { id: postId } }
         );
-        res.redirect(`/post/${postId}`);
         if (!updatedPost) {
             res.status(404).send(
                 "You have tried to update a post that doesnt exist, please try anohter id."
             );
         }
+        res.status(200);
+        res.end();
     } catch (err) {
         console.log(err);
         res.status(500);
@@ -52,7 +53,8 @@ router.delete("/:id", withAuth, async (req, res) => {
                 "You have tried to update a post that doesnt exist, please try anohter id."
             );
         }
-        res.redirect("/dashboard");
+        res.status(200);
+        res.end();
     } catch (err) {
         console.log(err);
         res.status(500);

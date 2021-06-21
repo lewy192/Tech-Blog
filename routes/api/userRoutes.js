@@ -10,6 +10,10 @@ router.post("/login", async (req, res) => {
         const userLogin = await User.findOne({
             where: { username: username },
         });
+        if (!userLogin) {
+            res.status(404);
+            res.redirect("/signup");
+        }
         if (!userLogin.checkPassword(passwordToCheck)) {
             detailsIncorrect = true;
             res.render("login", { detailsIncorrect });
