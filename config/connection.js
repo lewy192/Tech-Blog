@@ -3,18 +3,8 @@ require("dotenv").config();
 
 let sequelize;
 
-if (process.env.DATABASE_URL) {
-    const config = {
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
-        dialect: "postgres",
-        protocol: "postgres",
-    };
-    sequelize = new Sequelize(process.env.DATABASE_URL, config);
+if (process.env.JAWSDB_URL) {
+    sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
     sequelize = new Sequelize(
         process.env.DB_NAME,
