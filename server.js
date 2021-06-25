@@ -25,15 +25,9 @@ app.set("view engine", "handlebars");
 
 // establishing middlewear
 
-if (process.env.JAWSDW_URL) {
-    const secretKey = process.env.SECURE_KEY;
-} else {
-    const secretKey = process.env.COOKIE_SECRET;
-}
-
 app.use(
     session({
-        secret: secretKey,
+        secret: process.env.SECURE_KEY,
         resave: false,
         saveUninitialize: false,
         rolling: true,
