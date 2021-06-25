@@ -1,6 +1,10 @@
-<div class="new-comment">
+<div class="new-comment container">
     <div class="header-container"></div>
-    <form class="new-comment form">
+    <form
+        action="/api/comment/create/{{post.id}}"
+        class="new-comment form"
+        method="POST"
+    >
         <label
             for="comment-content"
             class="comment-label label"

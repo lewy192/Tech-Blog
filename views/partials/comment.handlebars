@@ -1,0 +1,10 @@
+<div class="comment-container">
+    {{#each comments as |comment|}}
+        <div class="comment-card">
+            <div class="header-container"></div>
+            <p class="comment-content">{{comment.commentContent}}</p>
+            <h5 class="comment-detials">-{{comment.User.username}}
+                {{format_date comment.date}}</h5>
+        </div>
+    {{/each}}
+</div>

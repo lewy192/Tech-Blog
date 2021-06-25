@@ -41,9 +41,9 @@ deletePost = async (event) => {
     //
 };
 
-const deleteButton = document.querySelector(".delete-post-button");
+let deletePostButton = document.querySelector(".delete-post-button");
 
-deleteButton.addEventListener("click", deletePost);
+deletePostButton.addEventListener("click", deletePost);
 
 const updateForm = document.querySelector(".update-post-form");
 

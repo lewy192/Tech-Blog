@@ -1,32 +1,9 @@
 {{#if isPostOwner}}
     {{! add partial here when working }}
-    <div class="new-post-form-container container">
-        <div class="header-container"></div>
-        <form class="update-post-form form" id="new-post-form">
-            <label for="new-post-title" class="new-post-title">Post Title:</label>
-            <input
-                type="text"
-                class="new-post-title-input"
-                name="postTitle"
-                value="{{post.postTitle}}"
-                required
-            />
-            <label for="new-post-content" class="new-post-label">Post Content:</label>
-            <textarea
-                form="new-post-form"
-                class="new-post-content-input"
-                name="postContent"
-                value="required"
-            >{{post.postContent}}</textarea>
-            <input
-                type="submit"
-                value="Update Post"
-                class="submit update-post"
-            />
-        </form>
-        <button class="delete-post-button submit">Delete</button>
-    </div>
+    {{> editpost}}
     {{> add-comment}}
+    {{> comment}}
+    
 {{else}}
     <div class="main-content">
         <div class="question-container">
@@ -48,39 +25,9 @@
             </div>
         </div>
         {{#if loggedIn}}
-            <div class="new-comment container">
-                <div class="header-container"></div>
-                <form
-                    action="/api/comment/create/{{post.id}}"
-                    class="new-comment form"
-                    method="POST"
-                >
-                    <label
-                        for="comment-content"
-                        class="comment-label label"
-                    >Comment:</label>
-                    <textarea
-                        class="comment-content"
-                        required
-                        name="commentContent"
-                    >
-                    </textarea>
-                    <input type="submit" class="submit" />
-                </form>
-            </div>
+        {{> add-comment}}
         {{/if}}
-        <div class="comment-container">
-            {{#each comments as |comment|}}
-                <div class="comment-card">
-                    <div class="header-container"></div>
-                    <p class="comment-content">{{comment.commentContent}}</p>
-                    <h5 class="comment-detials">-{{comment.User.username}}
-                        {{format_date comment.date}}</h5>
-                </div>
-            {{/each}}
-        </div>
+        {{> comment}}
     </div>
 
 {{/if}}
-
-<script src="/js/post.js"></script>

@@ -181,6 +181,7 @@ h3 {
 .comment-detials {
     padding-left: 1.25rem;
 }
+
 .new-post-button {
     padding: 0.75rem 0.6rem;
     background-color: var(--headerMaron);
@@ -189,6 +190,7 @@ h3 {
     border-radius: 8px;
     font-size: 20px;
     margin-top: 1rem;
+    cursor: pointer;
 }
 .new-post-container {
     display: flex;

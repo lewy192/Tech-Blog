@@ -27,9 +27,9 @@ app.set("view engine", "handlebars");
 
 app.use(
     session({
-        secret: process.env.SECURE_KEY,
+        secret: process.env.COOKIE_SECRET,
         resave: false,
-        saveUninitialize: true,
+        saveUninitialize: false,
         rolling: true,
         store: new SequelizeStore({
             db: sequelize,
